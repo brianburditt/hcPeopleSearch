@@ -5,86 +5,85 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <div class="row">
     <h1 class="text-center">Where's Waldo or anyone else?</h1>
     <h3 class="text-center">Lets find out something about the people you now.</h3>
 </div>
 
 <div class="input-group">
-    <form id="landing-page-search-form" class="pull-left form-inline well well-sm" method="get" action="/search" role="form" onsubmit="return getcoord(this);">
+    @using (Html.BeginForm("Index", "Person", FormMethod.Get, 
+        new { @class = "pull-left form-inline well well-sm", id = "landing-page-search-form" }))
+    {
         <div class="form-group">
-            <input class="form-control" name="search-name" type="text" placeholder="Search by First or Last Name">
+            <input class="form-control" name="searchString" type="text" placeholder="Search by First or Last Name">
         </div>
         <button type="submit" class="btn btn-success">Search</button>
-    </form>
+    }
 </div>
 
+    <!--
 
-// We want to show a load mask while the server process is running:
-<div id="divProcessing">
-    <p>Searching our records, please wait . . . <img src="../../Content/ajax-loader.gif"></p>
-</div>
 
-// We want to display the result from our submission in here:
-<div id="divResult">
+        <form id="landing-page-search-form" class="pull-left form-inline well well-sm" method="get" action="/search" role="form" onsubmit="return getcoord(this);">
+            <div class="form-group">
+                <input class="form-control" name="search-name" type="text" placeholder="Search by First or Last Name">
+            </div>
+            <button type="submit" class="btn btn-success">Search</button>
+        </form>
+    -->
 
-</div>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.first_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.last_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dob)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.age)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.interests)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.soundex_first_name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.soundex_last_name)
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.first_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.last_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dob)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.interests)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soundex_first_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.soundex_last_name)
+            </th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.first_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.last_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dob)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.age)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.interests)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soundex_first_name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.soundex_last_name)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.peopleID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.peopleID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.peopleID })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.first_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.last_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dob)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.age)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.interests)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soundex_first_name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.soundex_last_name)
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
