@@ -20,9 +20,16 @@
 </div>
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+// We want to show a load mask while the server process is running:
+<div id="divProcessing">
+    <p>Searching our records, please wait . . . <img src="../../Content/ajax-loader.gif"></p>
+</div>
+
+// We want to display the result from our submission in here:
+<div id="divResult">
+
+</div>
+
 <table class="table">
     <tr>
         <th>
