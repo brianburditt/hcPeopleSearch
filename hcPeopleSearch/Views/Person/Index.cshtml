@@ -1,0 +1,83 @@
+﻿@model IEnumerable<hcPeopleSearch.Models.person>
+
+@{
+    ViewBag.Title = "Exact Name";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <h1 class="text-center">Where's Waldo or anyone else?</h1>
+    <h3 class="text-center">Lets find out something about the people you now.</h3>
+</div>
+
+<div class="input-group">
+    <form id="landing-page-search-form" class="pull-left form-inline well well-sm" method="get" action="/search" role="form" onsubmit="return getcoord(this);">
+        <div class="form-group">
+            <input class="form-control" name="search-name" type="text" placeholder="Search by First or Last Name">
+        </div>
+        <button type="submit" class="btn btn-success">Search</button>
+    </form>
+</div>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dob)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.interests)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soundex_first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.soundex_last_name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.last_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dob)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.interests)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soundex_first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.soundex_last_name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.peopleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.peopleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.peopleID })
+        </td>
+    </tr>
+}
+
+</table>
